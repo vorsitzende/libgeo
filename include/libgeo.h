@@ -15,8 +15,11 @@
 #include "rectangle.hpp"
 #include "circle.hpp"
 #include "vector.hpp"
+#include "field.hpp"
 
 namespace geo {
+
+  typedef std::function<const Vector(double_t, double_t)> FieldEquation;
 
   inline double_t dist (const Point& a, const Point& b) {
     return Segment (a, b).length ();
@@ -24,6 +27,14 @@ namespace geo {
 
   inline double_t dist (const Shape& a, const Shape& b) {
     return Segment (a.center (), b.center ()).length ();
+  };
+  
+  inline Triangle right_triangle (const Point& a, const Point& b) {
+    return Triangle (a, b, Point (b.x (), a.y ()));
+  };
+  
+  inline Triangle right_triangle (const Segment& s) {
+    return right_triangle (s.a (), s.b ());
   };
 
 };
