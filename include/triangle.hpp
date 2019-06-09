@@ -3,6 +3,7 @@
 #define _TRIANGLE_HPP_
 
 #include "shape.hpp"
+#include "segment.hpp"
 
 namespace geo {
 
@@ -21,6 +22,9 @@ namespace geo {
     inline const Point& a (void) const { return a_; };
     inline const Point& b (void) const { return b_; };
     inline const Point& c (void) const { return c_; };
+    inline const Segment A (void) const { return Segment (b_, c_); };
+    inline const Segment B (void) const { return Segment (a_, c_); };
+    inline const Segment C (void) const { return Segment (a_, b_); };
     inline bool operator== (const Triangle& tri) {
       return a_ == tri.a_ && b_ == tri.b_ && c_ == tri.c_;
     };
