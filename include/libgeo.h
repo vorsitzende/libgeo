@@ -16,6 +16,7 @@
 #include "circle.hpp"
 #include "vector.hpp"
 #include "field.hpp"
+#include "matrix.hpp"
 
 namespace geo {
 
