@@ -43,14 +43,10 @@ namespace geo {
     return *this;
   };
 
-  Fraction& Fraction::reduce (void) {
-    for (int64_t i = (int64_t)den_ * (int64_t)num_; i > 1; i--) {
-      if ((!((int64_t)den_ % i)) && (!((int64_t)num_ % i))) {
-        den_ /= i;
-        num_ /= i;
-      };
-    };
-    return *this;
+  void Fraction::reduce (Fraction& f) {
+    int gcd__=gcd(f->num_,f->den_)
+      f->num = (f->num)/gcd__
+      f->den_ = (f->den_)/gcd___
   };
 
   std::ostream& operator<< (std::ostream& os, const Fraction& f) {
@@ -58,4 +54,13 @@ namespace geo {
     return os;
   };
 
+};
+
+bool Fraction::operator== (const Fraction &f){
+  Fraction::reduce(this)
+  Fraction::reduce(f)
+  if(this->num_==f->num_ && this->den_==f->den_){
+    return true;
+  }
+  return false;
 };
